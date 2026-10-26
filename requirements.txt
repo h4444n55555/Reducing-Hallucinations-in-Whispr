@@ -1,0 +1,7 @@
+openai-whisper>=20240930
+torch>=2.0
+jiwer>=3.0
+tqdm
+matplotlib     # scripts/tradeoff.py --plot
+silero-vad>=5.1  # optional: --modes vad
+pytest         # tests
