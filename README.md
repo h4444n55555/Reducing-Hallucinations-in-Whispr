@@ -11,6 +11,7 @@ Instructors: Dr. Anusha Prakash and Dr. Arun Kumar Sharma
 
 [![Report](https://img.shields.io/badge/Report-PDF-b31b1b?style=for-the-badge)](report/Whisper_HalluSpace_Report.pdf)
 [![Notebook](https://img.shields.io/badge/Code-Notebook-f37626?style=for-the-badge&logo=jupyter&logoColor=white)](Whisper_Hallucination_Projection.ipynb)
+[![Demo](https://img.shields.io/badge/Demo-Interactive-1d4f91?style=for-the-badge)](#interactive-demo)
 [![Paper](https://img.shields.io/badge/arXiv-2609.04561-555555?style=for-the-badge)](https://arxiv.org/abs/2609.04561)
 
 **[Read the full report (PDF)](report/Whisper_HalluSpace_Report.pdf)**
@@ -93,12 +94,44 @@ Per-dataset numbers, confidence intervals and paired tests are in the report and
   <br><sub><b>Effect of the edited layer.</b> Projecting to zero (blue) fails at layers 1 and 12; the affine variant (orange) behaves smoothly but rejects speech at the last layer.</sub>
 </p>
 
+## Interactive demo
+
+A local web page that runs any clip through all five methods at once and shows why each one keeps or rejects it.
+
+```bash
+python demo/app.py          # opens http://127.0.0.1:7860
+```
+
+<p align="center">
+  <img src="demo/screenshot.png" width="900" alt="Demo page: a pouring-water clip that plain Whisper transcribes as 'Thank you for watching!', with waveform, spectrogram, and one row per method showing its no-speech probability gauge, verdict and output.">
+</p>
+
+- **12 curated samples**, grouped by what they show: hallucinations every method removes, ones only the threshold
+  (or only the projection) removes, speech wrongly rejected, and clean speech.
+- **Your own audio**: record from the microphone (up to 30 s) or drop in a file. Silence, typing or music make good tests.
+- **Signal view**: waveform and the log-Mel spectrogram Whisper actually sees, with playback.
+- **Decision gauges**: each method's no-speech probability against its gate γ and threshold τ; for speech, a word
+  diff against the LibriSpeech reference.
+- **Saved-run fallback**: if the GPU or model is unavailable, samples show the results saved from our run.
+- Keys: <kbd>↑</kbd> <kbd>↓</kbd> change sample · <kbd>Space</kbd> play · <kbd>R</kbd> record.
+  `?s=s08` in the URL opens a given sample.
+
+Live results match the saved run on all 60 sample decisions (12 clips × 5 methods); a clip takes about 0.3–1.5 s on
+the RTX 3050. The demo needs only `demo/samples/` and `results/small/calibration/`, not `data/`.
+`demo/make_samples.py` re-picks the samples from the saved results (this one needs `data/`).
+
 ## Repository layout
 
 ```text
 whisper-halluspace/
-├── Whisper_Hallucination_Projection.ipynb   all code: calibration, sweeps, evaluation, analysis, figures
+├── Whisper_Hallucination_Projection.ipynb   all experiments: calibration, sweeps, evaluation, analysis, figures
+├── halluspace.py                            projection code for single clips (same as the notebook's core cells)
 ├── requirements.txt                         Python packages
+├── demo/
+│   ├── app.py                               demo server (FastAPI)
+│   ├── static/                              the page: index.html, style.css, app.js
+│   ├── samples/                             12 sample clips + their saved results
+│   └── make_samples.py                      picks the samples from results/small/eval
 ├── report/
 │   ├── Whisper_HalluSpace_Report.pdf        the report
 │   └── method_overview.svg                  method diagram
@@ -151,10 +184,15 @@ from its checkpoint.
 
 | Member | Contributions |
 |:--|:--|
-| **Nongmaithem Hans** | Selected the topic and paper; ran all experiments and optimised the pipeline for a 6 GB GPU; designed and carried out the evaluations, comparisons and the affine variant; made the presentation |
-| **Ravikant Sharma** | Downloaded and organised the datasets; wrote the initial notebook code; wrote the report from the results |
+| **Nongmaithem Hans** | Researched the topic and selected the paper; ran all experiments (calibration, sweeps, held-out evaluation) on a 6 GB laptop GPU and optimised the pipeline for it (fp16, shared encoder pass, skipped decodes, checkpoint and resume); designed the extended analyses: reproduction comparisons, tuned threshold baseline, McNemar and bootstrap tests, gate and last-layer analyses, affine variant; designed the dashboard and built its live inference server; made the presentation |
+| **Ravikant Sharma** | Built the dataset ingestion, preprocessing and label filtering for ESC-50, UrbanSound8K, FSD50K and LibriSpeech; wrote the initial notebook (Whisper decoding, forward hooks, SVD subspace, HR / WER / FRR metrics); audited the inconsistencies in the reference paper; wrote the report; curated the demo clips, built the waveform, spectrogram and word-diff views, and checked live results against the saved run |
+
+Both authors discussed the findings and reviewed the final report.
 
 ## Reference
 
 M. Abbasihafshejani and M. Jadliwala, "Reducing hallucinated transcripts in Whisper via hallucination space
 projection," arXiv:2609.04561, 2026.
+
+<sub>Demo sample clips are short excerpts from ESC-50 and UrbanSound8K (CC BY-NC), FSD50K (Creative Commons, per clip)
+and LibriSpeech (CC BY 4.0), used for this course project only.</sub>

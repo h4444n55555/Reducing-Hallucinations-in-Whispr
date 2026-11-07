@@ -8,3 +8,5 @@ soundfile
 jiwer>=3.0
 tqdm
 ipykernel
+fastapi        # demo only
+uvicorn        # demo only
