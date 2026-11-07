@@ -1,0 +1,650 @@
+[
+ {
+  "id": "s01",
+  "file": "s01.wav",
+  "case": "Hallucination removed by every method",
+  "caption": "Plain Whisper writes text for a non-speech sound; all four alternatives stay silent.",
+  "dataset": "UrbanSound8K",
+  "sound": "dog bark",
+  "speech": false,
+  "ref": "",
+  "source": "166421-3-0-31.wav",
+  "seconds": 4.0,
+  "saved": {
+   "plain": {
+    "text": "You're getting it.",
+    "raw_text": "You're getting it.",
+    "p_ns_base": 0.38069257140159607,
+    "p_ns": 0.38069257140159607,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.38069257140159607,
+    "p_ns": 0.7753192782402039,
+    "projected": true,
+    "rejected": true
+   },
+   "ours": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.38069257140159607,
+    "p_ns": 0.6240687370300293,
+    "projected": true,
+    "rejected": true
+   },
+   "affine": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.38069257140159607,
+    "p_ns": 0.6147889494895935,
+    "projected": true,
+    "rejected": true
+   },
+   "tau": {
+    "text": "",
+    "raw_text": "You're getting it.",
+    "p_ns_base": 0.38069257140159607,
+    "p_ns": 0.38069257140159607,
+    "projected": false,
+    "rejected": true
+   }
+  }
+ },
+ {
+  "id": "s02",
+  "file": "s02.wav",
+  "case": "Hallucination removed by every method",
+  "caption": "Plain Whisper writes text for a non-speech sound; all four alternatives stay silent.",
+  "dataset": "ESC-50",
+  "sound": "pouring water",
+  "speech": false,
+  "ref": "",
+  "source": "4-186693-A-17.wav",
+  "seconds": 5.0,
+  "saved": {
+   "plain": {
+    "text": "Thank you for watching!",
+    "raw_text": "Thank you for watching!",
+    "p_ns_base": 0.5425748229026794,
+    "p_ns": 0.5425748229026794,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.5425748229026794,
+    "p_ns": 0.7974231839179993,
+    "projected": true,
+    "rejected": true
+   },
+   "ours": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.5425748229026794,
+    "p_ns": 0.824097752571106,
+    "projected": true,
+    "rejected": true
+   },
+   "affine": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.5425748229026794,
+    "p_ns": 0.6847407221794128,
+    "projected": true,
+    "rejected": true
+   },
+   "tau": {
+    "text": "",
+    "raw_text": "Thank you for watching!",
+    "p_ns_base": 0.5425748229026794,
+    "p_ns": 0.5425748229026794,
+    "projected": false,
+    "rejected": true
+   }
+  }
+ },
+ {
+  "id": "s03",
+  "file": "s03.wav",
+  "case": "Hallucination removed by every method",
+  "caption": "Plain Whisper writes text for a non-speech sound; all four alternatives stay silent.",
+  "dataset": "FSD50K",
+  "sound": "Water",
+  "speech": false,
+  "ref": "",
+  "source": "327667.wav",
+  "seconds": 4.12,
+  "saved": {
+   "plain": {
+    "text": "Thank you for watching!",
+    "raw_text": "Thank you for watching!",
+    "p_ns_base": 0.4636233448982239,
+    "p_ns": 0.4636233448982239,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.4636233448982239,
+    "p_ns": 0.7829455733299255,
+    "projected": true,
+    "rejected": true
+   },
+   "ours": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.4636233448982239,
+    "p_ns": 0.8147332668304443,
+    "projected": true,
+    "rejected": true
+   },
+   "affine": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.4636233448982239,
+    "p_ns": 0.6192917227745056,
+    "projected": true,
+    "rejected": true
+   },
+   "tau": {
+    "text": "",
+    "raw_text": "Thank you for watching!",
+    "p_ns_base": 0.4636233448982239,
+    "p_ns": 0.4636233448982239,
+    "projected": false,
+    "rejected": true
+   }
+  }
+ },
+ {
+  "id": "s04",
+  "file": "s04.wav",
+  "case": "Only the tuned threshold helps",
+  "caption": "Both projection settings still hallucinate; lowering the threshold to 0.17 removes it.",
+  "dataset": "UrbanSound8K",
+  "sound": "street music",
+  "speech": false,
+  "ref": "",
+  "source": "132108-9-0-21.wav",
+  "seconds": 4.0,
+  "saved": {
+   "plain": {
+    "text": "Thank you.",
+    "raw_text": "Thank you.",
+    "p_ns_base": 0.3676616847515106,
+    "p_ns": 0.3676616847515106,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "Thank you.",
+    "raw_text": "Thank you.",
+    "p_ns_base": 0.3676616847515106,
+    "p_ns": 0.569550096988678,
+    "projected": true,
+    "rejected": false
+   },
+   "ours": {
+    "text": "Thank you.",
+    "raw_text": "Thank you.",
+    "p_ns_base": 0.3676616847515106,
+    "p_ns": 0.5748424530029297,
+    "projected": true,
+    "rejected": false
+   },
+   "affine": {
+    "text": "Thank you.",
+    "raw_text": "Thank you.",
+    "p_ns_base": 0.3676616847515106,
+    "p_ns": 0.403856098651886,
+    "projected": true,
+    "rejected": false
+   },
+   "tau": {
+    "text": "",
+    "raw_text": "Thank you.",
+    "p_ns_base": 0.3676616847515106,
+    "p_ns": 0.3676616847515106,
+    "projected": false,
+    "rejected": true
+   }
+  }
+ },
+ {
+  "id": "s05",
+  "file": "s05.wav",
+  "case": "Only the tuned threshold helps",
+  "caption": "Both projection settings still hallucinate; lowering the threshold to 0.17 removes it.",
+  "dataset": "FSD50K",
+  "sound": "Wood",
+  "speech": false,
+  "ref": "",
+  "source": "366775.wav",
+  "seconds": 5.34,
+  "saved": {
+   "plain": {
+    "text": "you",
+    "raw_text": "you",
+    "p_ns_base": 0.38708803057670593,
+    "p_ns": 0.38708803057670593,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "you",
+    "raw_text": "you",
+    "p_ns_base": 0.38708803057670593,
+    "p_ns": 0.46486860513687134,
+    "projected": true,
+    "rejected": false
+   },
+   "ours": {
+    "text": "you",
+    "raw_text": "you",
+    "p_ns_base": 0.38708803057670593,
+    "p_ns": 0.5804940462112427,
+    "projected": true,
+    "rejected": false
+   },
+   "affine": {
+    "text": "you",
+    "raw_text": "you",
+    "p_ns_base": 0.38708803057670593,
+    "p_ns": 0.38967928290367126,
+    "projected": true,
+    "rejected": false
+   },
+   "tau": {
+    "text": "",
+    "raw_text": "you",
+    "p_ns_base": 0.38708803057670593,
+    "p_ns": 0.38708803057670593,
+    "projected": false,
+    "rejected": true
+   }
+  }
+ },
+ {
+  "id": "s06",
+  "file": "s06.wav",
+  "case": "Only the projection helps",
+  "caption": "The edit removes a hallucination that the tuned threshold keeps; the rarer case.",
+  "dataset": "ESC-50",
+  "sound": "rooster",
+  "speech": false,
+  "ref": "",
+  "source": "4-208021-A-1.wav",
+  "seconds": 5.0,
+  "saved": {
+   "plain": {
+    "text": "Oh, woohoo!",
+    "raw_text": "Oh, woohoo!",
+    "p_ns_base": 0.16313672065734863,
+    "p_ns": 0.16313672065734863,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.16313672065734863,
+    "p_ns": 0.7116121053695679,
+    "projected": true,
+    "rejected": true
+   },
+   "ours": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.16313672065734863,
+    "p_ns": 0.6812607645988464,
+    "projected": true,
+    "rejected": true
+   },
+   "affine": {
+    "text": "Oh, oh, oh, oh, oh!",
+    "raw_text": "Oh, oh, oh, oh, oh!",
+    "p_ns_base": 0.16313672065734863,
+    "p_ns": 0.5013391375541687,
+    "projected": true,
+    "rejected": false
+   },
+   "tau": {
+    "text": "Oh, woohoo!",
+    "raw_text": "Oh, woohoo!",
+    "p_ns_base": 0.16313672065734863,
+    "p_ns": 0.16313672065734863,
+    "projected": false,
+    "rejected": false
+   }
+  }
+ },
+ {
+  "id": "s07",
+  "file": "s07.wav",
+  "case": "The affine variant misses",
+  "caption": "Eq. (1) and the threshold remove the hallucination; the affine edit does not.",
+  "dataset": "FSD50K",
+  "sound": "Sneeze",
+  "speech": false,
+  "ref": "",
+  "source": "328892.wav",
+  "seconds": 6.5,
+  "saved": {
+   "plain": {
+    "text": "It's you! It's you!",
+    "raw_text": "It's you! It's you!",
+    "p_ns_base": 0.3473826050758362,
+    "p_ns": 0.3473826050758362,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.3473826050758362,
+    "p_ns": 0.7210969924926758,
+    "projected": true,
+    "rejected": true
+   },
+   "ours": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.3473826050758362,
+    "p_ns": 0.6161280870437622,
+    "projected": true,
+    "rejected": true
+   },
+   "affine": {
+    "text": "Achoo! Achoo!",
+    "raw_text": "Achoo! Achoo!",
+    "p_ns_base": 0.3473826050758362,
+    "p_ns": 0.5481863617897034,
+    "projected": true,
+    "rejected": false
+   },
+   "tau": {
+    "text": "",
+    "raw_text": "It's you! It's you!",
+    "p_ns_base": 0.3473826050758362,
+    "p_ns": 0.3473826050758362,
+    "projected": false,
+    "rejected": true
+   }
+  }
+ },
+ {
+  "id": "s08",
+  "file": "s08.wav",
+  "case": "Speech lost to the projection",
+  "caption": "Real speech that a projection rejects while the tuned threshold keeps it.",
+  "dataset": "LibriSpeech test-other",
+  "sound": "read speech",
+  "speech": true,
+  "ref": "WHY DID HE CREATE THE DEFORMED AND HELPLESS WHY DID HE CREATE THE CRIMINAL THE IDIOTIC THE INSANE",
+  "source": "5764-299665-0004.flac",
+  "seconds": 9.46,
+  "saved": {
+   "plain": {
+    "text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "raw_text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "p_ns_base": 0.08809120953083038,
+    "p_ns": 0.08809120953083038,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "raw_text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "p_ns_base": 0.08809120953083038,
+    "p_ns": 0.08809120953083038,
+    "projected": false,
+    "rejected": false
+   },
+   "ours": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.08809120953083038,
+    "p_ns": 0.749203085899353,
+    "projected": true,
+    "rejected": true
+   },
+   "affine": {
+    "text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "raw_text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "p_ns_base": 0.08809120953083038,
+    "p_ns": 0.5826830863952637,
+    "projected": true,
+    "rejected": false
+   },
+   "tau": {
+    "text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "raw_text": "Why did he create the deformed and helpless? Why did he create the criminal? The idiotic, the insane?",
+    "p_ns_base": 0.08809120953083038,
+    "p_ns": 0.08809120953083038,
+    "projected": false,
+    "rejected": false
+   }
+  }
+ },
+ {
+  "id": "s09",
+  "file": "s09.wav",
+  "case": "Speech lost to the projection",
+  "caption": "Real speech that a projection rejects while the tuned threshold keeps it.",
+  "dataset": "LibriSpeech test-clean",
+  "sound": "read speech",
+  "speech": true,
+  "ref": "ALEXANDER LEANED FORWARD AND WARMED HIS HANDS BEFORE THE BLAZE",
+  "source": "4446-2275-0010.flac",
+  "seconds": 3.73,
+  "saved": {
+   "plain": {
+    "text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "raw_text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "p_ns_base": 0.15354391932487488,
+    "p_ns": 0.15354391932487488,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.15354391932487488,
+    "p_ns": 0.6172075867652893,
+    "projected": true,
+    "rejected": true
+   },
+   "ours": {
+    "text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "raw_text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "p_ns_base": 0.15354391932487488,
+    "p_ns": 0.35644835233688354,
+    "projected": true,
+    "rejected": false
+   },
+   "affine": {
+    "text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "raw_text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "p_ns_base": 0.15354391932487488,
+    "p_ns": 0.35830262303352356,
+    "projected": true,
+    "rejected": false
+   },
+   "tau": {
+    "text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "raw_text": "Alexander leaned forward and warmed his hands before the blaze.",
+    "p_ns_base": 0.15354391932487488,
+    "p_ns": 0.15354391932487488,
+    "projected": false,
+    "rejected": false
+   }
+  }
+ },
+ {
+  "id": "s10",
+  "file": "s10.wav",
+  "case": "Speech lost to the threshold",
+  "caption": "The threshold has a cost too: this utterance is rejected at 0.17 but kept by our projection.",
+  "dataset": "LibriSpeech test-other",
+  "sound": "read speech",
+  "speech": true,
+  "ref": "WOULD IT WOULD LEAVE ME AND THEN I COULD BELIEVE I SHALL NOT ALWAYS HAVE OCCASION FOR IT",
+  "source": "3080-5040-0000.flac",
+  "seconds": 6.85,
+  "saved": {
+   "plain": {
+    "text": "Would it would leave me and then I could believe I shall not always have occasion for it",
+    "raw_text": "Would it would leave me and then I could believe I shall not always have occasion for it",
+    "p_ns_base": 0.17758285999298096,
+    "p_ns": 0.17758285999298096,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "",
+    "raw_text": "",
+    "p_ns_base": 0.17758285999298096,
+    "p_ns": 0.6434324979782104,
+    "projected": true,
+    "rejected": true
+   },
+   "ours": {
+    "text": "Would it would leave me and then I could believe I shall not always have occasion for it",
+    "raw_text": "Would it would leave me and then I could believe I shall not always have occasion for it",
+    "p_ns_base": 0.17758285999298096,
+    "p_ns": 0.3492773175239563,
+    "projected": true,
+    "rejected": false
+   },
+   "affine": {
+    "text": "would it would leave me and then I could believe I shall not always have occasion for it.",
+    "raw_text": "would it would leave me and then I could believe I shall not always have occasion for it.",
+    "p_ns_base": 0.17758285999298096,
+    "p_ns": 0.4107309579849243,
+    "projected": true,
+    "rejected": false
+   },
+   "tau": {
+    "text": "",
+    "raw_text": "Would it would leave me and then I could believe I shall not always have occasion for it",
+    "p_ns_base": 0.17758285999298096,
+    "p_ns": 0.17758285999298096,
+    "projected": false,
+    "rejected": true
+   }
+  }
+ },
+ {
+  "id": "s11",
+  "file": "s11.wav",
+  "case": "Clean speech",
+  "caption": "Every method transcribes it without a single error.",
+  "dataset": "LibriSpeech test-clean",
+  "sound": "read speech",
+  "speech": true,
+  "ref": "THERE WAS A UNANIMOUS GROAN AT THIS AND MUCH REPROACH AFTER WHICH IN HIS PREOCCUPIED WAY HE EXPLAINED",
+  "source": "121-127105-0003.flac",
+  "seconds": 7.72,
+  "saved": {
+   "plain": {
+    "text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "raw_text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "p_ns_base": 0.015170836821198463,
+    "p_ns": 0.015170836821198463,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "raw_text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "p_ns_base": 0.015170836821198463,
+    "p_ns": 0.015170836821198463,
+    "projected": false,
+    "rejected": false
+   },
+   "ours": {
+    "text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "raw_text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "p_ns_base": 0.015170836821198463,
+    "p_ns": 0.015170836821198463,
+    "projected": false,
+    "rejected": false
+   },
+   "affine": {
+    "text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "raw_text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "p_ns_base": 0.015170836821198463,
+    "p_ns": 0.015170836821198463,
+    "projected": false,
+    "rejected": false
+   },
+   "tau": {
+    "text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "raw_text": "There was a unanimous groan at this, and much reproach, after which in his preoccupied way he explained",
+    "p_ns_base": 0.015170836821198463,
+    "p_ns": 0.015170836821198463,
+    "projected": false,
+    "rejected": false
+   }
+  }
+ },
+ {
+  "id": "s12",
+  "file": "s12.wav",
+  "case": "Clean speech",
+  "caption": "Every method transcribes it without a single error.",
+  "dataset": "LibriSpeech test-other",
+  "sound": "read speech",
+  "speech": true,
+  "ref": "I SHOULD HAVE THOUGHT OF IT AGAIN WHEN I WAS LESS BUSY MAY I GO WITH YOU NOW",
+  "source": "1688-142285-0050.flac",
+  "seconds": 5.45,
+  "saved": {
+   "plain": {
+    "text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "raw_text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "p_ns_base": 0.04625285416841507,
+    "p_ns": 0.04625285416841507,
+    "projected": false,
+    "rejected": false
+   },
+   "paper": {
+    "text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "raw_text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "p_ns_base": 0.04625285416841507,
+    "p_ns": 0.04625285416841507,
+    "projected": false,
+    "rejected": false
+   },
+   "ours": {
+    "text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "raw_text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "p_ns_base": 0.04625285416841507,
+    "p_ns": 0.04625285416841507,
+    "projected": false,
+    "rejected": false
+   },
+   "affine": {
+    "text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "raw_text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "p_ns_base": 0.04625285416841507,
+    "p_ns": 0.04625285416841507,
+    "projected": false,
+    "rejected": false
+   },
+   "tau": {
+    "text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "raw_text": "I should have thought of it again when I was less busy. May I go with you now?",
+    "p_ns_base": 0.04625285416841507,
+    "p_ns": 0.04625285416841507,
+    "projected": false,
+    "rejected": false
+   }
+  }
+ }
+]

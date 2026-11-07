@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whisper Hallucination Demo</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d4f91'/%3E%3Cpath d='M5 16h3l2-6 3 12 3-15 3 18 3-12 2 3h3' stroke='%23faf8f3' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <p class="kicker">AI553 Speech and Audio Processing, IIT Ropar</p>
+    <div class="controls">
+      <span class="status" id="status" data-state="loading"><i></i><span>Loading Whisper…</span></span>
+      <div class="seg" role="group" aria-label="Result source">
+        <button id="src-live" aria-pressed="true" title="Run the model on this machine">Live model</button>
+        <button id="src-saved" aria-pressed="false" title="Show the results saved from our evaluation run">Saved run</button>
+      </div>
+    </div>
+  </div>
+  <h1>Does Whisper hear <em>nothing</em>?</h1>
+  <p class="dek">Play a sound with no speech in it and Whisper may still write “Thank you for watching!”.
+    Here every clip goes through five methods at once: plain Whisper, two projection settings, our affine variant,
+    and plain Whisper with a lower no-speech threshold.</p>
+  <p class="byline">Nongmaithem Hans &amp; Ravikant Sharma · Instructors: Dr. Anusha Prakash and Dr. Arun Kumar Sharma ·
+    <a href="/report.pdf" target="_blank" rel="noopener">Read the report</a></p>
+</header>
+
+<details class="howto" id="howto">
+  <summary>How to read this</summary>
+  <div class="howto-body">
+    <figure class="howto-fig">
+      <img src="/method.svg" alt="Method: offline calibration builds a basis; per clip, a gate on the no-speech probability decides whether the decoder runs with the projection hook; the output is rejected if the no-speech probability exceeds tau.">
+    </figure>
+    <div class="howto-cols">
+      <div>
+        <h3>The gauge</h3>
+        <p>Whisper's first decoding step gives a <b>no-speech probability</b>, p<sub>ns</sub>. The shaded part of each gauge is
+          the <b>reject zone</b> above the threshold τ: a dot that lands there means the output is thrown away.</p>
+        <p class="legend-line"><span class="lg lg-base"></span> p<sub>ns</sub> of plain Whisper
+          <span class="lg lg-edit"></span> after the edit <span class="lg lg-gamma"></span> gate γ</p>
+      </div>
+      <div>
+        <h3>The projection</h3>
+        <p>If p<sub>ns</sub> is at least the gate γ, the clip is decoded again with a low-rank “hallucination subspace”
+          removed from one decoder layer (Eq. 1), or moved to the mean of silent clips (affine, Eq. 2). That usually pushes
+          p<sub>ns</sub> to the right, into the reject zone.</p>
+      </div>
+      <div>
+        <h3>The verdicts</h3>
+        <p><span class="chip good">✓ Correct</span> speech transcribed, or no output for a non-speech sound.
+          <span class="chip critical">✗ Hallucinated</span> text for a non-speech sound.
+          <span class="chip warning">! Falsely rejected</span> real speech thrown away.
+          For speech, the output is compared with the LibriSpeech reference: <span class="d-sub">wrong</span> words,
+          <span class="d-del">missing</span> words and <span class="d-ins">extra</span> words.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<main class="layout">
+  <aside class="index" aria-label="Input">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-samples" aria-selected="true" aria-controls="pane-samples">Samples</button>
+      <button role="tab" id="tab-record" aria-selected="false" aria-controls="pane-record">Your audio</button>
+    </div>
+
+    <div class="pane" id="pane-samples" role="tabpanel">
+      <ol class="sample-list" id="samples"></ol>
+    </div>
+
+    <div class="pane" id="pane-record" role="tabpanel" hidden>
+      <div class="rec">
+        <button class="rec-btn" id="rec-btn" aria-label="Start recording"><span class="rec-dot"></span></button>
+        <div class="rec-meta">
+          <span class="rec-time" id="rec-time">0:00</span>
+          <span class="rec-hint" id="rec-hint">Record up to 30 s. Silence, typing or music near the microphone make good tests.</span>
+        </div>
+      </div>
+      <fieldset class="truth">
+        <legend>Score it as</legend>
+        <label><input type="radio" name="truth" value="none" checked> Don't score</label>
+        <label><input type="radio" name="truth" value="nonspeech"> No speech</label>
+        <label><input type="radio" name="truth" value="speech"> Speech</label>
+      </fieldset>
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept="audio/*" hidden>
+        <span>or drop an audio file here</span>
+      </label>
+    </div>
+  </aside>
+
+  <section class="stage">
+    <figure class="panel signal">
+      <figcaption class="panel-head">
+        <span class="fig-no">Fig. 1</span>
+        <span class="fig-title" id="clip-title">Choose a sample or record your own</span>
+        <span class="fig-meta" id="clip-meta"></span>
+      </figcaption>
+      <div class="scope" id="scope">
+        <canvas id="wave" aria-label="Waveform"></canvas>
+        <canvas id="spec" aria-label="Log-Mel spectrogram, the input Whisper sees"></canvas>
+        <div class="playhead" id="playhead"></div>
+        <div class="scope-empty" id="scope-empty">The waveform and the log-Mel spectrogram Whisper sees will appear here.</div>
+      </div>
+      <div class="transport">
+        <button class="play" id="play" disabled aria-label="Play"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg></button>
+        <span class="time" id="time">0:00 / 0:00</span>
+        <span class="axis-note">waveform · log-Mel spectrogram (80 bands, low frequencies at the bottom)</span>
+      </div>
+      <div class="reference" id="reference" hidden>
+        <span class="ref-label">Reference</span>
+        <p id="ref-text"></p>
+      </div>
+      <audio id="audio" preload="auto"></audio>
+    </figure>
+
+    <figure class="panel decisions">
+      <figcaption class="panel-head">
+        <span class="fig-no">Table 1</span>
+        <span class="fig-title">What each method does with this clip</span>
+        <span class="source" id="source" hidden></span>
+      </figcaption>
+      <div class="rows" id="rows"></div>
+      <p class="case-note" id="case-note" hidden></p>
+    </figure>
+  </section>
+</main>
+
+<footer class="colophon">
+  <p><b>In the report:</b> on three held-out non-speech sets our projection setting lowers the mean hallucination rate from
+    28.4% to 1.3%, but plain Whisper with τ = 0.17 reaches 0.9%, with a lower word error rate and the same false rejections. Live results can differ slightly from the saved run
+    (fp16, one clip at a time instead of batches of 16).</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
