@@ -1,0 +1,4 @@
+,layer,rank,alpha,gamma,tau,stage-1 dev HR,stage-1 dev WER,stage-1 dev FRR
+paper,10.0,1.0,1.0,0.15,0.6,0.5,9.81549815498155,6.5
+"Eq. (1), selected",11.0,8.0,1.0,0.05,0.6,0.5,3.862238622386224,0.0
+"affine, selected",10.0,2.0,1.0,0.05,0.6,4.0,3.886838868388684,0.0

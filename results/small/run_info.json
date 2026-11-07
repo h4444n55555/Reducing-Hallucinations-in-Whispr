@@ -1,0 +1,99 @@
+{
+  "model": "small",
+  "device": "cuda",
+  "fp16": true,
+  "torch": "2.11.0+cu128",
+  "whisper": "20250625",
+  "python": "3.14.6",
+  "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "seed": 0,
+  "batch_size": 16,
+  "limits": {
+    "calib": null,
+    "sweep_ns": 400,
+    "sweep_speech": 200,
+    "esc50_test": null,
+    "urban": 2000,
+    "fsd": 2000,
+    "test_clean": 1000,
+    "test_other": 1000
+  },
+  "fsd_exclude": [
+    "Human_voice",
+    "Speech"
+  ],
+  "tau": 0.6,
+  "wer_tolerance_pp": 0.5,
+  "dataset_sizes": {
+    "esc50_cal": 1200,
+    "esc50_test": 800,
+    "urban": 8732,
+    "fsd": 8598,
+    "dev_clean": 2703,
+    "test_clean": 2620,
+    "test_other": 2939
+  },
+  "eval_sizes": {
+    "ESC-50 (folds 4-5)": 800,
+    "UrbanSound8K": 2000,
+    "FSD50K (non-speech)": 2000,
+    "LibriSpeech test-clean": 1000,
+    "LibriSpeech test-other": 1000
+  },
+  "calibration": {
+    "clips": 1200,
+    "hallucinated": 256,
+    "empty": 944
+  },
+  "dev_baseline": {
+    "HR": 20.0,
+    "WER": 3.591635916359164,
+    "FRR": 0.0
+  },
+  "paper_config": {
+    "layer": 10,
+    "rank": 1,
+    "alpha": 1.0,
+    "gamma": 0.15,
+    "tau": 0.6
+  },
+  "selected": {
+    "layer": 11,
+    "rank": 8,
+    "alpha": 1.0,
+    "gamma": 0.05,
+    "tau": 0.6
+  },
+  "affine_selected": {
+    "layer": 10,
+    "rank": 2,
+    "alpha": 1.0,
+    "gamma": 0.05,
+    "tau": 0.6
+  },
+  "tau_dev": 0.17,
+  "auroc": {
+    "original": 0.9991355208333333,
+    "always": 0.9982591666666667,
+    "gated": 0.9985897916666666,
+    "always_affine": 0.994958125,
+    "gated_affine": 0.9964722916666666,
+    "gated_affine_at_l11r8": 0.9946859895833333,
+    "always_paper": 0.9825451041666666,
+    "gated_paper": 0.9966816666666667,
+    "gated_paper_affine": 0.9983248958333333
+  },
+  "bag_of_hallucinations": [
+    "you",
+    "i",
+    "thank you",
+    "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+    "ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+    "ha ha ha ha ha ha ha ha ha ha ha ha ha h",
+    "0",
+    "yeah",
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "dog barking"
+  ],
+  "runtime_minutes": 117.9
+}

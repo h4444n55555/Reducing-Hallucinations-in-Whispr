@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="262" viewBox="0 0 760 262" role="img" aria-label="Gated projection pipeline: offline calibration produces a basis; at inference a gate on the first-step no-speech probability decides whether to decode with the projection hook; the output is rejected if the no-speech probability exceeds tau.">
+  <style>
+  text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .bg { fill: #ffffff; }
+  .box { fill: #ffffff; stroke: #545d66; stroke-width: 1.2; }
+  .box-hl { fill: #e8eef7; stroke: #1d4f91; stroke-width: 1.5; }
+  .lbl { fill: #16191c; font-size: 13px; font-weight: 600; }
+  .sub { fill: #545d66; font-size: 11.5px; }
+  .arrow { stroke: #545d66; stroke-width: 1.3; fill: none; }
+  .dash { stroke-dasharray: 4 4; }
+</style>
+<rect class="bg" x="0" y="0" width="760" height="262"/>
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#545d66"/></marker></defs>
+  <text x="10" y="18" class="sub" style="letter-spacing:.08em">OFFLINE, ONCE</text>
+  <rect x="10" y="28" width="220" height="50" rx="5" class="box"/><text x="120" y="49" text-anchor="middle" class="lbl">Calibration clips</text><text x="120" y="67" text-anchor="middle" class="sub">ESC-50 folds 1–3, 1,200 clips</text>
+  <rect x="270" y="28" width="220" height="50" rx="5" class="box"/><text x="380" y="49" text-anchor="middle" class="lbl">Label by outcome</text><text x="380" y="67" text-anchor="middle" class="sub">H hallucinated, F left empty</text>
+  <rect x="530" y="28" width="220" height="50" rx="5" class="box"/><text x="640" y="49" text-anchor="middle" class="lbl">Paired differences + SVD</text><text x="640" y="67" text-anchor="middle" class="sub">basis B (and centre c for affine)</text>
+  <line x1="230" y1="53" x2="268" y2="53" class="arrow" marker-end="url(#ah)"/>
+  <line x1="490" y1="53" x2="528" y2="53" class="arrow" marker-end="url(#ah)"/>
+  <line x1="640" y1="78" x2="640" y2="128" class="arrow dash" marker-end="url(#ah)"/><text x="648" y="108" class="sub">B, layer ℓ, strength α</text>
+  <text x="10" y="120" class="sub" style="letter-spacing:.08em">PER CLIP</text>
+  <rect x="10" y="130" width="150" height="50" rx="5" class="box"/><text x="85" y="151" text-anchor="middle" class="lbl">Encode audio</text><text x="85" y="169" text-anchor="middle" class="sub">30 s log-Mel</text>
+  <rect x="190" y="130" width="170" height="50" rx="5" class="box"/><text x="275" y="151" text-anchor="middle" class="lbl">First decoder step</text><text x="275" y="169" text-anchor="middle" class="sub">base p_ns at SOT</text>
+  <polygon points="430,125 482,155 430,185 378,155" class="box"/><text x="430" y="159" text-anchor="middle" class="lbl">p_ns ≥ γ ?</text>
+  <rect x="530" y="130" width="220" height="50" rx="5" class="box-hl"/><text x="640" y="151" text-anchor="middle" class="lbl">Decode with hook at layer ℓ</text><text x="640" y="169" text-anchor="middle" class="sub">edit inside span(B), strength α</text>
+  <line x1="160" y1="155" x2="188" y2="155" class="arrow" marker-end="url(#ah)"/>
+  <line x1="360" y1="155" x2="376" y2="155" class="arrow" marker-end="url(#ah)"/>
+  <line x1="482" y1="155" x2="528" y2="155" class="arrow" marker-end="url(#ah)"/><text x="492" y="148" class="sub">yes</text>
+  <line x1="430" y1="185" x2="430" y2="206" class="arrow" marker-end="url(#ah)"/><text x="438" y="200" class="sub">no</text>
+  <rect x="340" y="208" width="180" height="46" rx="5" class="box"/><text x="430" y="228" text-anchor="middle" class="lbl">Decode normally</text><text x="430" y="245" text-anchor="middle" class="sub">no edit</text>
+  <rect x="560" y="208" width="190" height="46" rx="5" class="box"/><text x="655" y="228" text-anchor="middle" class="lbl">Reject if p_ns &gt; τ</text><text x="655" y="245" text-anchor="middle" class="sub">else keep the text</text>
+  <line x1="520" y1="231" x2="558" y2="231" class="arrow" marker-end="url(#ah)"/>
+  <line x1="655" y1="180" x2="655" y2="206" class="arrow" marker-end="url(#ah)"/>
+</svg>

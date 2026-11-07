@@ -1,0 +1,121 @@
+{
+ "mean HR over models and sets": {
+  "original": 31.31,
+  "always": 2.44,
+  "gated": 3.74
+ },
+ "mean HR per model": {
+  "small": {
+   "original": 19.06,
+   "always": 3.0,
+   "gated": 3.07
+  },
+  "medium": {
+   "original": 27.66,
+   "always": 3.49,
+   "gated": 4.06
+  },
+  "large-v3": {
+   "original": 47.23,
+   "always": 0.85,
+   "gated": 4.09
+  }
+ },
+ "medium: Table 5 (tau=0.6) vs Table 1, plain HR": [
+  29.49,
+  27.66
+ ],
+ "medium: Table 5 (tau=0.6) vs Table 1, projected HR": [
+  5.09,
+  4.06
+ ],
+ "Fig. 4 mean HR": {
+  "BoH": 44.09,
+  "WhisperX VAD": 5.24
+ },
+ "large-v3 Wilson 95% CI": {
+  "gated": [
+   [
+    8.38,
+    [
+     6.65,
+     10.5
+    ]
+   ],
+   [
+    2.74,
+    [
+     2.42,
+     3.1
+    ]
+   ],
+   [
+    1.15,
+    [
+     0.95,
+     1.4
+    ]
+   ]
+  ],
+  "BoH": [
+   [
+    38.75,
+    [
+     35.44,
+     42.17
+    ]
+   ],
+   [
+    75.41,
+    [
+     74.5,
+     76.3
+    ]
+   ],
+   [
+    18.11,
+    [
+     17.31,
+     18.94
+    ]
+   ]
+  ],
+  "WhisperX VAD": [
+   [
+    4.13,
+    [
+     2.96,
+     5.74
+    ]
+   ],
+   [
+    3.05,
+    [
+     2.71,
+     3.43
+    ]
+   ],
+   [
+    8.55,
+    [
+     7.98,
+     9.16
+    ]
+   ]
+  ]
+ },
+ "implied rejected-word share / FRR": {
+  "small always clean": 0.77,
+  "small always other": 0.7,
+  "small gated clean": 0.84,
+  "small gated other": 0.32,
+  "medium always clean": 0.5,
+  "medium always other": 0.5,
+  "medium gated clean": 0.46,
+  "medium gated other": 0.47,
+  "large-v3 always clean": 0.88,
+  "large-v3 always other": 0.67,
+  "large-v3 gated clean": 0.77,
+  "large-v3 gated other": 0.53
+ }
+}

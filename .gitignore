@@ -1,5 +1,4 @@
-__pycache__/
-*.egg-info/
-.pytest_cache/
-runs/
 data/
+results/*/checkpoints/
+__pycache__/
+.ipynb_checkpoints/

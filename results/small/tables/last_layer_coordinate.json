@@ -1,0 +1,6 @@
+{
+ "layer": 12,
+ "coord_mean_hallucinated": -79.63538360595703,
+ "coord_mean_empty": -91.63099670410156,
+ "corr_coord_log_p_ns": -0.7330714019610701
+}

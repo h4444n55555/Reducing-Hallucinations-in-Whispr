@@ -1,0 +1,7 @@
+mode,source,HR ESC-50,HR US8K,HR FSD50K,WER clean,WER other,FRR clean,FRR other
+original,paper,23.5,12.33,21.35,4.04,8.38,0.0,0.0
+original,ours (original),26.125,14.5,44.6,3.3098451766574035,7.626792680916534,0.0,0.0
+always,paper,1.5,0.81,6.68,4.51,11.48,0.64,4.86
+always,ours (always_paper),1.375,0.55,7.1,8.197697499007543,19.490081872630363,6.7,14.7
+gated,paper,1.53,0.84,6.84,4.37,9.13,0.41,2.58
+gated,ours (gated_paper),1.375,0.65,7.4,3.905319571258436,8.407055332710588,1.4,2.4
