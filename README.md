@@ -132,6 +132,7 @@ whisper-halluspace/
 │   ├── static/                              the page: index.html, style.css, app.js
 │   ├── samples/                             12 sample clips + their saved results
 │   └── make_samples.py                      picks the samples from results/small/eval
+├── presentation/                            slides: PDF, PowerPoint and animated HTML
 ├── report/
 │   ├── Whisper_HalluSpace_Report.pdf        the report
 │   ├── method_overview.svg                  method diagram
