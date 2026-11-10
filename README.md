@@ -134,7 +134,8 @@ whisper-halluspace/
 │   └── make_samples.py                      picks the samples from results/small/eval
 ├── report/
 │   ├── Whisper_HalluSpace_Report.pdf        the report
-│   └── method_overview.svg                  method diagram
+│   ├── method_overview.svg                  method diagram
+│   └── latex/                               report source (IEEEtran) and its figures
 ├── results/small/                           everything the notebook produced
 │   ├── calibration/                         labels and decoder states of the calibration clips
 │   ├── sweeps/                              parameter sweeps, dev records, chosen threshold
